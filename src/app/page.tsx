@@ -1,6 +1,6 @@
 import Car from "../../assets/car.png";
 import Image from "next/image";
-import {CheckCircle} from "lucide-react";
+import {CheckCircle, Star} from "lucide-react";
 import Golf7 from "../../assets/golf7.jpg";
 
 export default function Home() {
@@ -21,6 +21,17 @@ export default function Home() {
         },
         {src: Golf7, desc: "BMW Seria 3 - Odświeżenie lakieru i detailing wnętrza"},
         {src: Golf7, desc: "Audi A4 - Pełna korekta i aplikacja powłoki ceramicznej"},
+    ]
+
+    const reviews = [
+        {
+            rating: 5,
+            text: 'Profesjonalna obsługa i niesamowite efekty! Mój samochód wygląda jak nowy.'
+        },
+        {
+            rating: 5,
+            text: 'Profesjonalna obsługa i niesamowite efekty! Mój samochód wygląda jak nowy.'
+        },
     ]
 
     return (
@@ -77,6 +88,24 @@ export default function Home() {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div>
+                <h4 className={"font-bold text-2xl"}>Opinie klientów</h4>
+                <div className={"mt-8 flex flex-col gap-y-4"}>
+                    {reviews.map((review, index) => (
+                        <div key={index}>
+                            <div className={"flex gap-x1"}>
+                                {Array.from({length: review.rating}).map((_, i) => (
+                                    <Star key={i} fill={"#155dfc"} strokeWidth={0}/>
+                                ))}
+                            </div>
+                            <p className="text-gray-600 mt-1">"{review.text}"</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div>
+
             </div>
         </div>
     );
