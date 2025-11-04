@@ -2,6 +2,7 @@ import Car from "../../assets/car.png";
 import Image from "next/image";
 import {CheckCircle, Star} from "lucide-react";
 import Golf7 from "../../assets/golf7.jpg";
+import Logo from "../../assets/logo-no-text.png";
 
 export default function Home() {
     const features = [
@@ -99,7 +100,7 @@ export default function Home() {
                                     <Star key={i} fill={"#155dfc"} strokeWidth={0}/>
                                 ))}
                             </div>
-                            <p className="text-gray-600 mt-1">"{review.text}"</p>
+                            <p className="text-gray-600 mt-1">{review.text}</p>
                         </div>
                     ))}
                 </div>
@@ -135,6 +136,56 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <footer className="w-full bg-white border-t border-gray-200 mt-12">
+                <div
+                    className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    <div className="flex flex-col justify-start">
+                        <div className="flex items-center gap-2 mb-4">
+                            <Image src={Logo} width={70} alt="Clariflow"/>
+                            <span className="text-xl font-semibold text-gray-800">Clariflow</span>
+                        </div>
+                        <p className="text-gray-500 text-sm leading-relaxed">
+                            Clariflow to skoordynowane technicznie centrum detailingu
+                            samochodowego, tworzone z pasji i dbałości o każdy detal.
+                        </p>
+                        <div className="flex gap-3 mt-5">
+                            <button
+                                className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition cursor-pointer">
+                                Zadzwoń
+                            </button>
+                            <button
+                                className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition cursor-pointer">
+                                Napisz
+                            </button>
+                        </div>
+                    </div>
+                    <div className="flex flex-col justify-start">
+                        <div className="h-[70px] flex items-center">
+                            <h4 className="text-gray-800 font-semibold text-lg">O nas</h4>
+                        </div>
+                        <ul className="space-y-2 text-sm text-gray-600">
+                            <li className="hover:text-blue-600 cursor-pointer">O nas</li>
+                            <li className="hover:text-blue-600 cursor-pointer">Kontakt</li>
+                            <li className="hover:text-blue-600 cursor-pointer">Opinie</li>
+                        </ul>
+                    </div>
+                    <div className="flex flex-col justify-start">
+                        <div className="h-[70px] flex items-center">
+                            <h4 className="text-gray-800 font-semibold text-lg">Skontaktuj się</h4>
+                        </div>
+                        <ul className="space-y-2 text-sm text-gray-600">
+                            <li>Email: kontakt@clariflow.pl</li>
+                            <li>Telefon: +48 600 000 000</li>
+                            <li>Gliwice, Polska</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="border-t border-gray-200 mt-8 py-4 text-center text-sm text-gray-500">
+                    © {new Date().getFullYear()} Clariflow. Wszelkie prawa zastrzeżone.
+                </div>
+            </footer>
+
 
         </div>
     );
