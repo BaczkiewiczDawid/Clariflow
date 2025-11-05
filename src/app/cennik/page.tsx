@@ -9,9 +9,9 @@ export default function PriceList() {
             description:
                 "Kompleksowa pielęgnacja auta — od podstawowego czyszczenia po pełny detailing i ochronę lakieru.",
             items: [
-                { name: "Basic Clean", details: "Mycie karoserii, felg, szyb, odkurzanie wnętrza", price: "od 249 zł" },
-                { name: "Premium Detail", details: "Dekontaminacja lakieru, czyszczenie wnętrza, wosk", price: "od 449 zł" },
-                { name: "Clariflow Signature 💎", details: "Korekta lakieru, zabezpieczenie, pełny detailing", price: "od 899 zł" },
+                { name: "Basic Clean", details: "Mycie karoserii, felg, szyb, odkurzanie wnętrza", price: "od 179 zł" },
+                { name: "Premium Detail", details: "Dekontaminacja lakieru, pełne czyszczenie wnętrza, pranie tapicerki", price: "od 399 zł" },
+                { name: "Clariflow Signature 💎", details: "Jednoetapowa korekta lakieru, zabezpieczenie woskiem, pełny detailing", price: "od 1200 zł" },
             ],
         },
         {
@@ -20,9 +20,9 @@ export default function PriceList() {
             description:
                 "Przywróć głębię koloru i połysk lakieru. Usuwanie zarysowań i mikrorys, polerowanie reflektorów.",
             items: [
-                { name: "One Step Correction", details: "Korekta jednoetapowa (60–70% mikrorys)", price: "od 799 zł" },
-                { name: "Full Correction", details: "Wieloetapowa korekta, maksymalny połysk", price: "od 1499 zł" },
-                { name: "Zabezpieczenie lakieru woskiem", details: "Ochrona i połysk po korekcie", price: "od 199 zł" },
+                { name: "One Step Correction", details: "Korekta jednoetapowa (60–70% mikrorys), wosk", price: "od 599 zł" },
+                { name: "Full Correction", details: "Wieloetapowa korekta, maksymalny połysk, wosk", price: "od 1200 zł" },
+                { name: "Pełna korekta + ceramika", details: "Ochrona i połysk po korekcie", price: "od 2000 zł" },
             ],
         },
         {
@@ -31,24 +31,24 @@ export default function PriceList() {
             description:
                 "Długotrwała ochrona lakieru, odporność na zabrudzenia i promieniowanie UV. Różne warianty trwałości.",
             items: [
-                { name: "Ceramic Lite", details: "Trwałość do 12 miesięcy", price: "od 999 zł" },
-                { name: "Ceramic Pro", details: "Trwałość 2–3 lata", price: "od 1499 zł" },
-                { name: "Ceramic Elite", details: "Trwałość do 5 lat", price: "od 1999 zł" },
+                { name: "Ceramic Lite", details: "Trwałość do 12 miesięcy", price: "od 700 zł" },
+                { name: "Ceramic Pro", details: "Trwałość 2–3 lata", price: "od 900 zł" },
+                { name: "Ceramic Elite", details: "Trwałość do 5 lat", price: "od 1200 zł" },
             ],
         },
         {
-            title: "Wnętrze i tapicerka",
+            title: "Detailing wnętrza",
             icon: <Droplets className="w-7 h-7 text-blue-500" />,
             description:
                 "Detailing wnętrza, czyszczenie tapicerki, impregnacja skór i ozonowanie – komfort i świeżość w środku.",
             items: [
-                { name: "Pranie tapicerki materiałowej", details: "Kompleksowe pranie całego wnętrza", price: "od 349 zł" },
+                { name: "Pranie tapicerki materiałowej", details: "Kompleksowe pranie całego wnętrza", price: "od 199 zł" },
                 { name: "Czyszczenie i impregnacja skór", details: "Delikatna pielęgnacja z ochroną", price: "od 299 zł" },
-                { name: "Detailing wnętrza + ozonowanie", details: "Czystość i eliminacja zapachów", price: "od 399 zł" },
+                { name: "Detailing wnętrza", details: "Czystość całego wnętrza", price: "od 119 zł" },
             ],
         },
         {
-            title: "Usługi dodatkowe",
+            title: "Zabezbieczenia i dodatki",
             icon: <Settings className="w-7 h-7 text-blue-500" />,
             description:
                 "Dodatkowe zabezpieczenia i szczegóły, które robią różnicę w wyglądzie auta.",
@@ -56,7 +56,8 @@ export default function PriceList() {
                 { name: "Aplikacja wosku premium", details: "Dodatkowy połysk i ochrona", price: "od 199 zł" },
                 { name: "Zabezpieczenie felg", details: "Ochrona przed pyłem i brudem", price: "od 149 zł" },
                 { name: "Niewidzialna wycieraczka", details: "Zabezpieczenie szyb", price: "od 99 zł" },
-                { name: "Detailing komory silnika", details: "Czysty i bezpieczny silnik", price: "od 199 zł" },
+                { name: "Zabezpieczenie plastików", details: "Przywrócenie głębi koloru i ochrona przed blaknięciem", price: "od 159 zł" },
+                { name: "Zabezpieczenie pojedyńczego elementu ceramiką", details: "Zabezpieczenie elementu", price: "od 199 zł" },
             ],
         },
     ];
