@@ -31,9 +31,9 @@ export function Navbar() {
                 <div className="md:hidden bg-white border-t border-gray-200 shadow-md">
                     <div className="flex flex-col items-center space-y-4 py-6 text-gray-700 font-medium">
                         <Link href="/" onClick={toggleMenu} className="hover:text-blue-600">Główna</Link>
-                        <Link href="#cennik" onClick={toggleMenu} className="hover:text-blue-600">Cennik</Link>
-                        <Link href="#galeria" onClick={toggleMenu} className="hover:text-blue-600">Galeria</Link>
-                        <Link href="#kontakt" onClick={toggleMenu} className="hover:text-blue-600">Kontakt</Link>
+                        <Link href="/cennik" onClick={toggleMenu} className="hover:text-blue-600">Cennik</Link>
+                        <Link href="/galeria" onClick={toggleMenu} className="hover:text-blue-600">Galeria</Link>
+                        <Link href="/kontakt" onClick={toggleMenu} className="hover:text-blue-600">Kontakt</Link>
                     </div>
                 </div>
             )}
