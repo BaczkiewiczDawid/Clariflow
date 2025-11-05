@@ -6,7 +6,7 @@ export const Footer = () => {
     return (
         <footer className="w-full bg-white border-t border-gray-200 mt-12">
             <div
-                className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                className="mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
                 <div className="flex flex-col justify-start">
                     <div className="flex items-center gap-2 mb-4">
                         <Image src={Logo} width={70} alt="Clariflow"/>

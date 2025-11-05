@@ -4,7 +4,7 @@ export const CallToAction = () => {
     return (
         <div className="mt-8">
             <div
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl px-10 py-12 flex flex-col md:flex-row items-center justify-between shadow-lg max-w-[1100px] mx-auto">
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl px-10 py-12 flex flex-col md:flex-row items-center justify-between shadow-lg mx-auto">
                 <div className="md:w-2/3 text-center md:text-left">
                     <h5 className="font-bold text-3xl text-white leading-snug">
                         Zadbaj o swój samochód już dziś — umów termin w Clariflow
