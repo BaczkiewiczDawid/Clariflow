@@ -1,14 +1,15 @@
-import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import {Poppins} from 'next/font/google'
+import { Poppins } from "next/font/google";
+import { Navbar } from "@/components/navbar";
 
 const poppins = Poppins({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-poppins',
-    display: 'swap',
-})
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+    variable: "--font-poppins",
+    display: "swap",
+});
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -19,30 +20,41 @@ const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
 });
+
 export const metadata: Metadata = {
-    title: 'Clariflow – Autodetailing Gliwice | Profesjonalne czyszczenie i polerowanie',
-    description: 'Clariflow oferuje kompleksowe usługi autodetailingu w Gliwicach: mycie, polerowanie, pranie tapicerki, zabezpieczenia lakieru i więcej. Zadbaj o swój samochód.',
-    keywords: ['autodetailing gliwice', 'polerowanie auta gliwice', 'mycie detailingowe', 'clariflow', 'czyszczenie wnętrza auta'],
+    title: "Clariflow – Autodetailing Gliwice | Profesjonalne czyszczenie i polerowanie",
+    description:
+        "Clariflow oferuje kompleksowe usługi autodetailingu w Gliwicach: mycie, polerowanie, pranie tapicerki, zabezpieczenia lakieru i więcej. Zadbaj o swój samochód.",
+    keywords: [
+        "autodetailing gliwice",
+        "polerowanie auta gliwice",
+        "mycie detailingowe",
+        "clariflow",
+        "czyszczenie wnętrza auta",
+    ],
     openGraph: {
-        title: 'Clariflow – Autodetailing Gliwice',
-        description: 'Profesjonalne czyszczenie i pielęgnacja aut w Gliwicach',
-        url: 'https://clariflow.pl',
-        siteName: 'Clariflow',
+        title: "Clariflow – Autodetailing Gliwice",
+        description: "Profesjonalne czyszczenie i pielęgnacja aut w Gliwicach",
+        url: "https://clariflow.pl",
+        siteName: "Clariflow",
         images: [
             {
                 url: "../../assets/logo.png",
                 width: 1200,
                 height: 630,
-                alt: 'Clariflow – Autodetailing Gliwice',
+                alt: "Clariflow – Autodetailing Gliwice",
             },
         ],
     },
-}
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="pl" className={poppins.variable}>
-        <body className="font-sans">{children}</body>
+        <html lang="pl" className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable}`}>
+        <body className="font-sans bg-white text-gray-900">
+        <Navbar/>
+        <main className="pt-24">{children}</main>
+        </body>
         </html>
-    )
+    );
 }

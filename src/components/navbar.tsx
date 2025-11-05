@@ -19,9 +19,9 @@ export function Navbar() {
                 </Link>
                 <div className="hidden md:flex space-x-10 text-gray-700 font-medium">
                     <Link href="/" className="hover:text-blue-600 transition">Główna</Link>
-                    <Link href="#pricing" className="hover:text-blue-600 transition">Cennik</Link>
-                    <Link href="#gallery" className="hover:text-blue-600 transition">Galeria</Link>
-                    <Link href="#contact" className="hover:text-blue-600 transition">Kontakt</Link>
+                    <Link href="/cennik" className="hover:text-blue-600 transition">Cennik</Link>
+                    <Link href="/galeria" className="hover:text-blue-600 transition">Galeria</Link>
+                    <Link href="/kontakt" className="hover:text-blue-600 transition">Kontakt</Link>
                 </div>
                 <button onClick={toggleMenu} className="md:hidden">
                     {isOpen ? <X size={28}/> : <Menu size={28}/>}
