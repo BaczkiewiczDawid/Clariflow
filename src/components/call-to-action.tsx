@@ -1,3 +1,5 @@
+import {CtaButton} from "@/components/cta-button";
+
 export const CallToAction = () => {
     return (
         <div className="mt-8">
@@ -17,13 +19,9 @@ export const CallToAction = () => {
                         Skontaktuj się z nami
                     </button>
                     <div className="flex items-center gap-6">
-                        <button
-                            className="text-white font-medium  transition cursor-pointer">Zadzwoń
-                        </button>
+                        <CtaButton type={"phone"} color={"white"}/>
                         <span className="text-white/40">|</span>
-                        <button
-                            className="text-white font-medium  transition cursor-pointer">Napisz
-                        </button>
+                        <CtaButton type={"message"} color={"white"}/>
                     </div>
                 </div>
             </div>

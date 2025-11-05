@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Car from "../../assets/car.png";
+import {CtaButton} from "@/components/cta-button";
 
 export const Header = () => {
     return (
@@ -11,14 +12,8 @@ export const Header = () => {
                     tapicerki i ochrona ceramiczna.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <button
-                        className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition cursor-pointer">
-                        Umów wizytę
-                    </button>
-                    <button
-                        className="text-gray-600 px-6 py-3 rounded-xl hover:bg-blue-50 transition cursor-pointer">
-                        Zobacz efekty
-                    </button>
+                    <CtaButton type={"contact"} color={"whiteBg"}/>
+                    <CtaButton type={"gallery"} color={"black"}/>
                 </div>
             </div>
 

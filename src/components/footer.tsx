@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Logo from "../../assets/logo-no-text.png";
+import {CtaButton} from "@/components/cta-button";
 
 export const Footer = () => {
     return (
@@ -16,14 +17,8 @@ export const Footer = () => {
                         samochodowego, tworzone z pasji i dbałości o każdy detal.
                     </p>
                     <div className="flex gap-3 mt-5">
-                        <button
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition cursor-pointer">
-                            Zadzwoń
-                        </button>
-                        <button
-                            className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition cursor-pointer">
-                            Napisz
-                        </button>
+                        <CtaButton type={"phone"} color={"whiteBg"}/>
+                        <CtaButton type={"message"} color={"black"}/>
                     </div>
                 </div>
                 <div className="flex flex-col justify-start">

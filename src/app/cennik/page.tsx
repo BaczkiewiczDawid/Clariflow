@@ -1,4 +1,5 @@
 import { Sparkles, ShieldCheck, Droplets, SprayCan, Settings } from "lucide-react";
+import {CtaButton} from "@/components/cta-button";
 
 export default function PriceList() {
     const sections = [
@@ -115,7 +116,7 @@ export default function PriceList() {
             </div>
             <div className="text-center mt-16">
                 <a
-                    href="#contact"
+                    href="/kontakt"
                     className="inline-block bg-blue-600 text-white font-semibold py-3 px-10 rounded-full shadow-md hover:bg-blue-700 transition-transform hover:scale-105"
                 >
                     Umów wizytę
