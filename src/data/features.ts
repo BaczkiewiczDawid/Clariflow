@@ -1,9 +1,8 @@
 export const FeaturesList = [
-    "Indywidualne podejście do klienta",
-    "Praca tylko na markowych produktach",
-    "Pasja, doświadczenie i precyzja",
-    "Dbałość o każdy detal",
-    "Terminowość i rzetelność",
-    "Bezpieczna pielęgnacja lakieru",
-    "Komfortowa lokalizacja - Gliwice",
+    "Indywidualne podejście do klienta i auta",
+    "Praca wyłącznie na markowych produktach detailingowych",
+    "Pasja, precyzja i doświadczenie w każdym detalu",
+    "Terminowość i rzetelność w realizacji usług autodetailingu",
+    "Bezpieczna pielęgnacja lakieru i wnętrza samochodu",
+    "Komfortowa lokalizacja w Gliwicach",
 ];
