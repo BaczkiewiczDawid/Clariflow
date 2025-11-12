@@ -1,12 +1,55 @@
 "use client";
 
 import {useEffect, useState} from "react";
-import Image from "next/image";
+import Image, {StaticImageData} from "next/image";
 import {mainGalleryList} from "@/data/mainGalleryList";
 
+type GalleryItem = {
+    name: string;
+    description: string;
+    services: string[];
+    images: (string | StaticImageData)[];
+};
+
 export default function GalleryPage() {
-    const [selectedCar, setSelectedCar] = useState<typeof mainGalleryList[0] | null>(null);
+    const [selectedCar, setSelectedCar] = useState<GalleryItem | null>(null);
     const [currentImage, setCurrentImage] = useState(0);
+    const [imageLoading, setImageLoading] = useState(false);
+    const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+
+    useEffect(() => {
+        if (selectedCar) {
+            selectedCar.images.forEach((src) => {
+                const imgSrc = typeof src === "string" ? src : src.src;
+                if (!loadedImages.has(imgSrc)) {
+                    const img = new window.Image();
+                    img.src = imgSrc;
+                    img.onload = () => {
+                        setLoadedImages((prev) => new Set(prev).add(imgSrc));
+                    };
+                }
+            });
+        }
+    }, [selectedCar]);
+
+    useEffect(() => {
+        if (selectedCar) {
+            const current = selectedCar.images[currentImage];
+            const currentSrc = typeof current === "string" ? current : current.src;
+
+            if (!loadedImages.has(currentSrc)) {
+                setImageLoading(true);
+                const img = new window.Image();
+                img.src = currentSrc;
+                img.onload = () => {
+                    setImageLoading(false);
+                    setLoadedImages((prev) => new Set(prev).add(currentSrc));
+                };
+            } else {
+                setImageLoading(false);
+            }
+        }
+    }, [currentImage, selectedCar, loadedImages]);
 
     useEffect(() => {
         const handleKey = (e: KeyboardEvent) => {
@@ -90,12 +133,22 @@ export default function GalleryPage() {
                                 className="grid md:grid-cols-2 max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
                                 <div
                                     className="relative bg-black flex flex-col items-center justify-center overflow-hidden min-h-[50vh] md:min-h-0">
+                                    {imageLoading && (
+                                        <div
+                                            className="absolute inset-0 flex items-center justify-center bg-black/50 z-10">
+                                            <div
+                                                className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                        </div>
+                                    )}
                                     <Image
                                         src={selectedCar.images[currentImage]}
                                         alt={selectedCar.name}
                                         width={800}
                                         height={600}
-                                        className="object-cover w-full h-full max-h-[50vh] md:max-h-[80vh] transition-all duration-300"
+                                        className={`object-cover w-full h-full max-h-[50vh] md:max-h-[80vh] transition-opacity duration-300 ${
+                                            imageLoading ? 'opacity-0' : 'opacity-100'
+                                        }`}
+                                        priority
                                     />
 
                                     <button
