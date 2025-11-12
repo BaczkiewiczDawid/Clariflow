@@ -1,8 +1,8 @@
 "use client";
 
-import {useEffect, useState} from "react";
-import Image, {StaticImageData} from "next/image";
-import {mainGalleryList} from "@/data/mainGalleryList";
+import { useEffect, useState } from "react";
+import Image, { StaticImageData } from "next/image";
+import { mainGalleryList } from "@/data/mainGalleryList";
 
 type GalleryItem = {
     name: string;
@@ -14,42 +14,22 @@ type GalleryItem = {
 export default function GalleryPage() {
     const [selectedCar, setSelectedCar] = useState<GalleryItem | null>(null);
     const [currentImage, setCurrentImage] = useState(0);
-    const [imageLoading, setImageLoading] = useState(false);
     const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
     useEffect(() => {
-        if (selectedCar) {
-            selectedCar.images.forEach((src) => {
-                const imgSrc = typeof src === "string" ? src : src.src;
-                if (!loadedImages.has(imgSrc)) {
-                    const img = new window.Image();
-                    img.src = imgSrc;
-                    img.onload = () => {
-                        setLoadedImages((prev) => new Set(prev).add(imgSrc));
-                    };
-                }
-            });
-        }
-    }, [selectedCar]);
-
-    useEffect(() => {
-        if (selectedCar) {
-            const current = selectedCar.images[currentImage];
-            const currentSrc = typeof current === "string" ? current : current.src;
-
-            if (!loadedImages.has(currentSrc)) {
-                setImageLoading(true);
+        if (!selectedCar) return;
+        const newLoaded = new Set(loadedImages);
+        selectedCar.images.forEach((src) => {
+            const imgSrc = typeof src === "string" ? src : src.src;
+            if (!newLoaded.has(imgSrc)) {
                 const img = new window.Image();
-                img.src = currentSrc;
+                img.src = imgSrc;
                 img.onload = () => {
-                    setImageLoading(false);
-                    setLoadedImages((prev) => new Set(prev).add(currentSrc));
+                    setLoadedImages((prev) => new Set(prev).add(imgSrc));
                 };
-            } else {
-                setImageLoading(false);
             }
-        }
-    }, [currentImage, selectedCar, loadedImages]);
+        });
+    }, [selectedCar]);
 
     useEffect(() => {
         const handleKey = (e: KeyboardEvent) => {
@@ -71,16 +51,11 @@ export default function GalleryPage() {
     }, [selectedCar]);
 
     useEffect(() => {
-        if (selectedCar) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
+        document.body.style.overflow = selectedCar ? "hidden" : "unset";
         return () => {
-            document.body.style.overflow = 'unset';
+            document.body.style.overflow = "unset";
         };
     }, [selectedCar]);
-
 
     return (
         <div className="min-h-screen bg-gray-50 py-16">
@@ -88,6 +63,7 @@ export default function GalleryPage() {
                 <h1 className="text-3xl font-semibold mb-10 text-center">
                     Galeria Realizacji
                 </h1>
+
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {mainGalleryList.map((car, i) => (
                         <div
@@ -105,8 +81,7 @@ export default function GalleryPage() {
                                 height={400}
                                 className="object-cover w-full h-64 group-hover:scale-105 transition-transform"
                             />
-                            <div
-                                className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
                                 <h3 className="text-white font-medium text-lg">{car.name}</h3>
                             </div>
                         </div>
@@ -115,7 +90,7 @@ export default function GalleryPage() {
 
                 {selectedCar && (
                     <div
-                        className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto"
+                        className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto cursor-pointer"
                         onClick={() => setSelectedCar(null)}
                     >
                         <div
@@ -129,25 +104,14 @@ export default function GalleryPage() {
                                 ✕
                             </button>
 
-                            <div
-                                className="grid md:grid-cols-2 max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
-                                <div
-                                    className="relative bg-black flex flex-col items-center justify-center overflow-hidden min-h-[50vh] md:min-h-0">
-                                    {imageLoading && (
-                                        <div
-                                            className="absolute inset-0 flex items-center justify-center bg-black/50 z-10">
-                                            <div
-                                                className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
-                                        </div>
-                                    )}
+                            <div className="grid md:grid-cols-2 max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
+                                <div className="relative bg-black flex flex-col items-center justify-center overflow-hidden min-h-[50vh] md:min-h-0">
                                     <Image
                                         src={selectedCar.images[currentImage]}
                                         alt={selectedCar.name}
                                         width={800}
                                         height={600}
-                                        className={`object-cover w-full h-full max-h-[50vh] md:max-h-[80vh] transition-opacity duration-300 ${
-                                            imageLoading ? 'opacity-0' : 'opacity-100'
-                                        }`}
+                                        className="object-cover w-full h-full max-h-[50vh] md:max-h-[80vh] transition-opacity duration-300"
                                         priority
                                     />
 
@@ -161,9 +125,9 @@ export default function GalleryPage() {
                                         }
                                         className="absolute left-0 top-0 h-full w-1/4 flex items-center justify-start bg-gradient-to-r from-black/40 hover:from-black/50 to-transparent transition duration-300 cursor-pointer"
                                     >
-                    <span className="text-white text-3xl font-light pl-4 select-none">
-                      ‹
-                    </span>
+                                        <span className="text-white text-3xl font-light pl-4 select-none">
+                                            ‹
+                                        </span>
                                     </button>
 
                                     <button
@@ -176,9 +140,9 @@ export default function GalleryPage() {
                                         }
                                         className="absolute right-0 top-0 h-full w-1/4 flex items-center justify-end bg-gradient-to-l from-black/40 hover:from-black/50 to-transparent transition duration-300 cursor-pointer"
                                     >
-                    <span className="text-white text-3xl font-light pr-4 select-none">
-                      ›
-                    </span>
+                                        <span className="text-white text-3xl font-light pr-4 select-none">
+                                            ›
+                                        </span>
                                     </button>
 
                                     <div className="absolute bottom-4 flex justify-center gap-2">
