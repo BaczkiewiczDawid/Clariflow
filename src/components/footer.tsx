@@ -26,10 +26,23 @@ export const Footer = () => {
                         <h4 className="text-gray-800 font-semibold text-lg">O nas</h4>
                     </div>
                     <ul className="space-y-2 text-sm text-gray-600">
-                        <li className="hover:text-blue-600 cursor-pointer">O nas</li>
-                        <li className="hover:text-blue-600 cursor-pointer">Kontakt</li>
-                        <li className="hover:text-blue-600 cursor-pointer">Opinie</li>
+                        <li>
+                            <a href="/" className="hover:text-blue-600 cursor-pointer">
+                                O nas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kontakt" className="hover:text-blue-600 cursor-pointer">
+                                Kontakt
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/search?sca_esv=50541b30f97a7e32&sxsrf=AE3TifOa6v9m4eVofyce9EuQwfz0S_30BQ:1762964820012&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-EwA3k7ymxmSigVdWbbNpu2OkEAI_wx21Ih04BOQFnk5wWoIKm4gNAEMU7lCqNRWr76C6LHnKITMQRDJ5iZ35YvZERUg4nwQiWAyYNaTqc5fjVi8y0A%3D%3D&q=Clariflow+Autodetailing+Gliwice+Reviews&sa=X&ved=2ahUKEwjGreTeg-2QAxXnRPEDHehWHPAQ0bkNegQINxAE&biw=1366&bih=633&dpr=1" className="hover:text-blue-600 cursor-pointer">
+                                Opinie
+                            </a>
+                        </li>
                     </ul>
+
                 </div>
                 <div className="flex flex-col justify-start">
                     <div className="h-[70px] flex items-center">
