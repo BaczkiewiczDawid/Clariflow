@@ -3,7 +3,6 @@ import {Features} from "@/components/featuers";
 import {Gallery} from "@/components/gallery";
 import {Reviews} from "@/components/reviews";
 import {CallToAction} from "@/components/call-to-action";
-import {Footer} from "@/components/footer";
 
 export default function Home() {
     return (

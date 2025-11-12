@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Logo from "../../assets/logo-no-text.png";
 import {CtaButton} from "@/components/cta-button";
+import Link from "next/link";
 
 export const Footer = () => {
     return (
@@ -27,19 +28,19 @@ export const Footer = () => {
                     </div>
                     <ul className="space-y-2 text-sm text-gray-600">
                         <li>
-                            <a href="/" className="hover:text-blue-600 cursor-pointer">
+                            <Link href="/" className="hover:text-blue-600 cursor-pointer">
                                 O nas
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="/kontakt" className="hover:text-blue-600 cursor-pointer">
+                            <Link href="/kontakt" className="hover:text-blue-600 cursor-pointer">
                                 Kontakt
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="https://www.google.com/search?sca_esv=50541b30f97a7e32&sxsrf=AE3TifOa6v9m4eVofyce9EuQwfz0S_30BQ:1762964820012&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-EwA3k7ymxmSigVdWbbNpu2OkEAI_wx21Ih04BOQFnk5wWoIKm4gNAEMU7lCqNRWr76C6LHnKITMQRDJ5iZ35YvZERUg4nwQiWAyYNaTqc5fjVi8y0A%3D%3D&q=Clariflow+Autodetailing+Gliwice+Reviews&sa=X&ved=2ahUKEwjGreTeg-2QAxXnRPEDHehWHPAQ0bkNegQINxAE&biw=1366&bih=633&dpr=1" className="hover:text-blue-600 cursor-pointer">
+                            <Link href="https://www.google.com/search?sca_esv=50541b30f97a7e32&sxsrf=AE3TifOa6v9m4eVofyce9EuQwfz0S_30BQ:1762964820012&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-EwA3k7ymxmSigVdWbbNpu2OkEAI_wx21Ih04BOQFnk5wWoIKm4gNAEMU7lCqNRWr76C6LHnKITMQRDJ5iZ35YvZERUg4nwQiWAyYNaTqc5fjVi8y0A%3D%3D&q=Clariflow+Autodetailing+Gliwice+Reviews&sa=X&ved=2ahUKEwjGreTeg-2QAxXnRPEDHehWHPAQ0bkNegQINxAE&biw=1366&bih=633&dpr=1" className="hover:text-blue-600 cursor-pointer">
                                 Opinie
-                            </a>
+                            </Link>
                         </li>
                     </ul>
 
