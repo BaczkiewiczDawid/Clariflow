@@ -1,4 +1,5 @@
 import {CtaButton} from "@/components/cta-button";
+import Link from "next/link";
 
 export const CallToAction = () => {
     return (
@@ -14,10 +15,12 @@ export const CallToAction = () => {
                     </p>
                 </div>
                 <div className="flex flex-col sm:flex-row md:flex-col items-center gap-4 mt-8 md:mt-0">
-                    <button
-                        className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-xl cursor-pointer">
-                        Skontaktuj się z nami
-                    </button>
+                    <Link href="/kontakt">
+                        <button
+                            className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-xl cursor-pointer">
+                            Skontaktuj się z nami
+                        </button>
+                    </Link>
                     <div className="flex items-center gap-6">
                         <CtaButton type={"phone"} color={"white"}/>
                         <span className="text-white/40">|</span>
