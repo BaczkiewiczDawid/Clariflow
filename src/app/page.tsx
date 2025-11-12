@@ -13,7 +13,6 @@ export default function Home() {
             <Gallery/>
             <Reviews/>
             <CallToAction/>
-            <Footer/>
         </div>
     );
 }
