@@ -90,7 +90,9 @@ export default function GalleryPage() {
     useEffect(() => {
         const handleKey = (e: KeyboardEvent) => {
             if (!selectedCar) return;
-            if (e.key === "ArrowLeft") {
+            if (e.key === "Escape") {
+                setSelectedCar(null);
+            } else if (e.key === "ArrowLeft") {
                 setCurrentImage((prev) =>
                     prev === 0 ? selectedCar.images.length - 1 : prev - 1
                 );
@@ -102,6 +104,17 @@ export default function GalleryPage() {
         };
         window.addEventListener("keydown", handleKey);
         return () => window.removeEventListener("keydown", handleKey);
+    }, [selectedCar]);
+
+    useEffect(() => {
+        if (selectedCar) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
     }, [selectedCar]);
 
 
@@ -137,24 +150,31 @@ export default function GalleryPage() {
                 </div>
 
                 {selectedCar && (
-                    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
-                        <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full mx-4 relative overflow-hidden">
+                    <div
+                        className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto"
+                        onClick={() => setSelectedCar(null)}
+                    >
+                        <div
+                            className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full my-auto relative"
+                            onClick={(e) => e.stopPropagation()}
+                        >
                             <button
-                                className="absolute top-4 right-4 text-gray-500 hover:text-black z-50 cursor-pointer"
+                                className="absolute top-3 right-3 md:top-4 md:right-4 text-gray-700 hover:text-black z-50 bg-white/90 hover:bg-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg text-xl md:text-2xl"
                                 onClick={() => setSelectedCar(null)}
                             >
                                 ✕
                             </button>
 
-                            <div className="grid md:grid-cols-2">
+                            <div
+                                className="grid md:grid-cols-2 max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
                                 <div
-                                    className="relative bg-black flex flex-col items-center justify-center overflow-hidden">
+                                    className="relative bg-black flex flex-col items-center justify-center overflow-hidden min-h-[50vh] md:min-h-0">
                                     <Image
                                         src={selectedCar.images[currentImage]}
                                         alt={selectedCar.name}
                                         width={800}
                                         height={600}
-                                        className="object-cover max-h-[80vh] rounded-lg transition-all duration-300"
+                                        className="object-cover w-full h-full max-h-[50vh] md:max-h-[80vh] transition-all duration-300"
                                     />
 
                                     <button
