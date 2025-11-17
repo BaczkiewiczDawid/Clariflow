@@ -1,6 +1,6 @@
 import Audi1 from "../../assets/gallery/audi-rs-etron-1.jpg"
 import Audi2 from "../../assets/gallery/audi-rs-etron-2.jpg"
-import Audi3 from "../../assets/gallery/audi-rs-etron-3.jpg"
+import Audi3 from "../../assets/gallery/audi-rs-etron-3.png"
 import Audi4 from "../../assets/gallery/audi-rs-etron-4.jpg"
 import HyundaiBayon1 from "../../assets/gallery/hyundai-bayon-1.jpg"
 import HyundaiBayon2 from "../../assets/gallery/hyundai-bayon-2.jpg"
