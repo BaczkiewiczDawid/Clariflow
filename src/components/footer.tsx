@@ -51,7 +51,7 @@ export const Footer = () => {
                     </div>
                     <ul className="space-y-2 text-sm text-gray-600">
                         <li>Email: kontakt@clariflow.pl</li>
-                        <li>Telefon: +48 669 994 490</li>
+                        <li>Telefon: +48 666 994 490</li>
                         <li>Gliwice, Polska</li>
                     </ul>
                 </div>

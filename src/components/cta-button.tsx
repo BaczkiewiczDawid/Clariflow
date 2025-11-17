@@ -6,9 +6,9 @@ type CtaButtonProps = {
 export const CtaButton = ({ type, color = "black" }: CtaButtonProps) => {
     const href =
         type === "phone"
-            ? "tel:+48669994490"
+            ? "tel:+48666994490"
             : type === "message"
-                ? "https://wa.me/+48669994490"
+                ? "https://wa.me/+48666994490"
                 : type === "contact"
                     ? "/kontakt"
                     : "/galeria";

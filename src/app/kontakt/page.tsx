@@ -1,13 +1,31 @@
-import { Metadata } from "next";
-import { Mail, MapPin, Phone } from "lucide-react";
+"use client"
 
-export const metadata: Metadata = {
-    title: "Kontakt | Clariflow Detailing Gliwice",
-    description:
-        "Skontaktuj się z Clariflow – profesjonalny autodetailing w Gliwicach. Umów termin detailingu, korekty lakieru, powłoki ceramicznej lub czyszczenia wnętrza.",
-};
+import {Metadata} from "next";
+import {Mail, MapPin, Phone} from "lucide-react";
+import {useState} from "react";
 
-export default function KontaktPage() {
+export default function Page() {
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<string | null>(null);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        setStatus(null);
+
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+
+        const res = await fetch("/api/contact", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data),
+        });
+
+        setLoading(false);
+        setStatus(res.ok ? "Wiadomość wysłana!" : "Błąd przy wysyłaniu wiadomości");
+    };
+
     return (
         <main className="min-h-screen bg-neutral-50">
             <section className="relative py-16 px-6 lg:px-20">
@@ -21,12 +39,9 @@ export default function KontaktPage() {
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-12">
-                        <form className="bg-white shadow-md rounded-2xl p-8 space-y-6">
+                        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-2xl p-8 space-y-6">
                             <div>
-                                <label
-                                    htmlFor="name"
-                                    className="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                                     Imię i nazwisko
                                 </label>
                                 <input
@@ -39,10 +54,7 @@ export default function KontaktPage() {
                             </div>
 
                             <div>
-                                <label
-                                    htmlFor="email"
-                                    className="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                                     Adres e-mail
                                 </label>
                                 <input
@@ -55,10 +67,7 @@ export default function KontaktPage() {
                             </div>
 
                             <div>
-                                <label
-                                    htmlFor="message"
-                                    className="block text-sm font-medium text-gray-700 mb-2"
-                                >
+                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                                     Wiadomość
                                 </label>
                                 <textarea
@@ -72,26 +81,28 @@ export default function KontaktPage() {
 
                             <button
                                 type="submit"
+                                disabled={loading}
                                 className="w-full text-lg py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition cursor-pointer"
                             >
-                                Wyślij wiadomość
+                                {loading ? "Wysyłanie..." : "Wyślij wiadomość"}
                             </button>
-                        </form>
 
+                            {status && <p className="text-center text-sm mt-2">{status}</p>}
+                        </form>
                         <div className="space-y-8">
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Dane kontaktowe</h2>
                                 <ul className="space-y-4 text-gray-700">
                                     <li className="flex items-center gap-3">
-                                        <Phone className="w-5 h-5 text-blue-600" />
-                                        <span>+48 669 994 490</span>
+                                        <Phone className="w-5 h-5 text-blue-600"/>
+                                        <span>+48 666 994 490</span>
                                     </li>
                                     <li className="flex items-center gap-3">
-                                        <Mail className="w-5 h-5 text-blue-600" />
+                                        <Mail className="w-5 h-5 text-blue-600"/>
                                         <span>kontakt@clariflow.pl</span>
                                     </li>
                                     <li className="flex items-center gap-3">
-                                        <MapPin className="w-5 h-5 text-blue-600" />
+                                        <MapPin className="w-5 h-5 text-blue-600"/>
                                         <span>Gliwice, ul. Brzozowa 67</span>
                                     </li>
                                 </ul>
@@ -114,7 +125,7 @@ export default function KontaktPage() {
                                         width="100%"
                                         height="100%"
                                         loading="lazy"
-                                        style={{ border: 0 }}
+                                        style={{border: 0}}
                                         allowFullScreen
                                     ></iframe>
                                 </div>
@@ -133,7 +144,7 @@ export default function KontaktPage() {
                     ciągu 24 godzin.
                 </p>
                 <a
-                    href="tel:+48500123456"
+                    href="tel:+48666994490"
                     className="inline-block bg-white text-blue-700 font-semibold text-lg px-8 py-4 rounded-lg hover:bg-gray-100 transition"
                 >
                     Zadzwoń teraz
