@@ -1,6 +1,6 @@
 import Golf7 from "../../assets/golf7.jpg";
-import AudiRsEtron from "../../assets/gallery/audi-rs-etron-1.jpg";
-import HyundaiBayon from "../../assets/gallery/hyundai-bayon-3.jpg";
+import AudiRsEtron from "../../assets/gallery/audi-rs-etron-1.webp";
+import HyundaiBayon from "../../assets/gallery/hyundai-bayon-3.webp";
 
 export const galleryItems = [
     {
