@@ -11,15 +11,16 @@ type BlogPost = {
     keywords: string[];
     content: string;
     datePublished: string;
-    headerImage?: any;
+    headerImage: string;
 };
 
 export function generateStaticParams() {
-    return blogPosts.map((post) => ({slug: post.slug}));
+    return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({params}: { params: { slug: string } }) {
-    const post = (blogPosts as BlogPost[]).find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const { slug } = params;
+    const post = (blogPosts as BlogPost[]).find((p) => p.slug === slug);
 
     if (!post) return {};
 
@@ -31,11 +32,10 @@ export function generateMetadata({params}: { params: { slug: string } }) {
             title: post.title,
             description: post.description,
             type: "article",
-            locale: "pl_PL"
-        }
+            locale: "pl_PL",
+        },
     };
 }
-
 export default function BlogPostPage({params}: { params: { slug: string } }) {
     const post = (blogPosts as BlogPost[]).find((p) => p.slug === params.slug);
 
