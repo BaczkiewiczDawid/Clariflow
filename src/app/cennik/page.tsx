@@ -1,5 +1,4 @@
 import { Sparkles, ShieldCheck, Droplets, SprayCan, Settings } from "lucide-react";
-import {CtaButton} from "@/components/cta-button";
 
 export default function PriceList() {
     const sections = [

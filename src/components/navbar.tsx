@@ -21,6 +21,7 @@ export function Navbar() {
                     <Link href="/" className="hover:text-blue-600 transition">Główna</Link>
                     <Link href="/cennik" className="hover:text-blue-600 transition">Cennik</Link>
                     <Link href="/galeria" className="hover:text-blue-600 transition">Galeria</Link>
+                    <Link href="/blog" onClick={toggleMenu} className="hover:text-blue-600">Blog</Link>
                     <Link href="/kontakt" className="hover:text-blue-600 transition">Kontakt</Link>
                 </div>
                 <button onClick={toggleMenu} className="md:hidden">
@@ -33,6 +34,7 @@ export function Navbar() {
                         <Link href="/" onClick={toggleMenu} className="hover:text-blue-600">Główna</Link>
                         <Link href="/cennik" onClick={toggleMenu} className="hover:text-blue-600">Cennik</Link>
                         <Link href="/galeria" onClick={toggleMenu} className="hover:text-blue-600">Galeria</Link>
+                        <Link href="/blog" onClick={toggleMenu} className="hover:text-blue-600">Blog</Link>
                         <Link href="/kontakt" onClick={toggleMenu} className="hover:text-blue-600">Kontakt</Link>
                     </div>
                 </div>
