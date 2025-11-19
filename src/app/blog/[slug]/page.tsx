@@ -38,7 +38,7 @@ export async function generateMetadata({params}: { params: Promise<{ slug: strin
     };
 }
 
-export default function BlogPostPage({params}: { params: { slug: string } }) {
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
     const post = (blogPosts as BlogPost[]).find((p) => p.slug === params.slug);
 
     if (!post) notFound();
@@ -72,14 +72,13 @@ export default function BlogPostPage({params}: { params: { slug: string } }) {
         <main className="max-w-3xl mx-auto px-4 py-12">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{__html: JSON.stringify(schemaData)}}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
             />
             <article>
                 <h1 className="text-4xl font-bold">{post.title}</h1>
                 {post.headerImage && (
-                    <div
-                        className={"w-full h-[300px] md:h-[300px] 2xl:h-[400px] overflow-hidden rounded-xl py-8 lg:py-12 object-contain"}>
-                        <Image src={post.headerImage} alt={post.title} width={800} height={400}/>
+                    <div className="w-full h-[300px] md:h-[300px] 2xl:h-[400px] overflow-hidden rounded-xl py-8 lg:py-12 object-contain">
+                        <Image src={post.headerImage} alt={post.title} width={800} height={400} />
                     </div>
                 )}
                 <p className="text-blue-600 font-bold text-xl mt-12 mb-8">{post.description}</p>
@@ -94,16 +93,15 @@ export default function BlogPostPage({params}: { params: { slug: string } }) {
                 </div>
             </article>
             <div className="mt-16 border-t pt-6 flex flex-col md:flex-row gap-4 md:gap-x-8 lg:gap-x-12">
-                <Link href={"https://www.instagram.com/clariflow/"} className={"flex-row items-center gap-2 flex"}>
-                    <Instagram strokeWidth={1.5} width={24}/>
+                <Link href="https://www.instagram.com/clariflow/" className="flex-row items-center gap-2 flex">
+                    <Instagram strokeWidth={1.5} width={24} />
                     <p>Instagram</p>
                 </Link>
-                <Link href={"https://www.facebook.com/profile.php?id=61583831067120"}
-                      className={"flex-row items-center gap-2 flex"}>
-                    <Facebook strokeWidth={1.5} width={24}/>
+                <Link href="https://www.facebook.com/profile.php?id=61583831067120" className="flex-row items-center gap-2 flex">
+                    <Facebook strokeWidth={1.5} width={24} />
                     <p>Facebook</p>
                 </Link>
-                <Link href={"https://www.tiktok.com/@clariflow"} className={"flex-row items-center gap-2 flex"}>
+                <Link href="https://www.tiktok.com/@clariflow" className="flex-row items-center gap-2 flex">
                     <p>TikTok</p>
                 </Link>
             </div>
