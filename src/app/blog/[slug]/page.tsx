@@ -15,11 +15,12 @@ type BlogPost = {
 };
 
 export function generateStaticParams() {
-    return blogPosts.map((post) => ({ slug: post.slug }));
+    return blogPosts.map((post) => ({slug: post.slug}));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const { slug } = params;
+export async function generateMetadata({params}: { params: Promise<{ slug: string }> }) {
+    const {slug} = await params;
+
     const post = (blogPosts as BlogPost[]).find((p) => p.slug === slug);
 
     if (!post) return {};
@@ -36,6 +37,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         },
     };
 }
+
 export default function BlogPostPage({params}: { params: { slug: string } }) {
     const post = (blogPosts as BlogPost[]).find((p) => p.slug === params.slug);
 
@@ -96,7 +98,8 @@ export default function BlogPostPage({params}: { params: { slug: string } }) {
                     <Instagram strokeWidth={1.5} width={24}/>
                     <p>Instagram</p>
                 </Link>
-                <Link href={"https://www.facebook.com/profile.php?id=61583831067120"} className={"flex-row items-center gap-2 flex"}>
+                <Link href={"https://www.facebook.com/profile.php?id=61583831067120"}
+                      className={"flex-row items-center gap-2 flex"}>
                     <Facebook strokeWidth={1.5} width={24}/>
                     <p>Facebook</p>
                 </Link>
