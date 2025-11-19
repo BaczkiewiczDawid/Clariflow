@@ -18,8 +18,8 @@ export function generateStaticParams() {
     return blogPosts.map((post) => ({slug: post.slug}));
 }
 
-export async function generateMetadata({params}: { params: Promise<{ slug: string }> }) {
-    const {slug} = await params;
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const { slug } = params;
 
     const post = (blogPosts as BlogPost[]).find((p) => p.slug === slug);
 
@@ -37,6 +37,7 @@ export async function generateMetadata({params}: { params: Promise<{ slug: strin
         },
     };
 }
+
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
     const post = (blogPosts as BlogPost[]).find((p) => p.slug === params.slug);
