@@ -100,15 +100,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </article>
             <div className="mt-16 border-t pt-6 flex flex-col md:flex-row gap-4 md:gap-x-8 lg:gap-x-12">
                 <Link href="https://www.instagram.com/clariflow/" className="flex-row items-center gap-2 flex">
-                    <Instagram strokeWidth={1.5} width={24} />
-                    <p>Instagram</p>
+                    Instagram
                 </Link>
                 <Link href="https://www.facebook.com/profile.php?id=61583831067120" className="flex-row items-center gap-2 flex">
-                    <Facebook strokeWidth={1.5} width={24} />
-                    <p>Facebook</p>
+                    Facebook
                 </Link>
                 <Link href="https://www.tiktok.com/@clariflow" className="flex-row items-center gap-2 flex">
-                    <p>TikTok</p>
+                    TikTok
                 </Link>
             </div>
         </main>
