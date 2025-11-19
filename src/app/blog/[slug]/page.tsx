@@ -3,6 +3,7 @@ import {notFound} from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {Facebook, Instagram} from "lucide-react";
+import { Metadata } from "next";
 
 type BlogPost = {
     slug: string;
@@ -15,15 +16,19 @@ type BlogPost = {
 };
 
 export function generateStaticParams() {
-    return blogPosts.map((post) => ({slug: post.slug}));
+    return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata(
+    { params }: { params: { slug: string } }
+): Promise<Metadata> {
     const { slug } = params;
 
     const post = (blogPosts as BlogPost[]).find((p) => p.slug === slug);
 
-    if (!post) return {};
+    if (!post) {
+        return {};
+    }
 
     return {
         title: `${post.title} | Clariflow Gliwice`,
@@ -37,7 +42,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         },
     };
 }
-
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
     const post = (blogPosts as BlogPost[]).find((p) => p.slug === params.slug);
