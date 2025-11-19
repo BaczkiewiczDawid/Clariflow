@@ -1,14 +1,18 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Logo from "../../assets/logo-no-text.png";
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     const toggleMenu = () => setIsOpen(!isOpen);
+
+    const isActive = (path: string) => pathname === path;
 
     return (
         <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
@@ -18,11 +22,36 @@ export function Navbar() {
                     <span className="text-2xl font-semibold text-[#00a2de]">Clariflow</span>
                 </Link>
                 <div className="hidden md:flex space-x-10 text-gray-700 font-medium">
-                    <Link href="/" className="hover:text-blue-600 transition">Główna</Link>
-                    <Link href="/cennik" className="hover:text-blue-600 transition">Cennik</Link>
-                    <Link href="/galeria" className="hover:text-blue-600 transition">Galeria</Link>
-                    <Link href="/blog" onClick={toggleMenu} className="hover:text-blue-600">Blog</Link>
-                    <Link href="/kontakt" className="hover:text-blue-600 transition">Kontakt</Link>
+                    <Link
+                        href="/"
+                        className={`transition ${isActive("/") ? "text-blue-600" : "hover:text-blue-600"}`}
+                    >
+                        Główna
+                    </Link>
+                    <Link
+                        href="/cennik"
+                        className={`transition ${isActive("/cennik") ? "text-blue-600" : "hover:text-blue-600"}`}
+                    >
+                        Cennik
+                    </Link>
+                    <Link
+                        href="/galeria"
+                        className={`transition ${isActive("/galeria") ? "text-blue-600" : "hover:text-blue-600"}`}
+                    >
+                        Galeria
+                    </Link>
+                    <Link
+                        href="/blog"
+                        className={`transition ${isActive("/blog") ? "text-blue-600" : "hover:text-blue-600"}`}
+                    >
+                        Blog
+                    </Link>
+                    <Link
+                        href="/kontakt"
+                        className={`transition ${isActive("/kontakt") ? "text-blue-600" : "hover:text-blue-600"}`}
+                    >
+                        Kontakt
+                    </Link>
                 </div>
                 <button onClick={toggleMenu} className="md:hidden">
                     {isOpen ? <X size={28}/> : <Menu size={28}/>}
@@ -31,11 +60,41 @@ export function Navbar() {
             {isOpen && (
                 <div className="md:hidden bg-white border-t border-gray-200 shadow-md">
                     <div className="flex flex-col items-center space-y-4 py-6 text-gray-700 font-medium">
-                        <Link href="/" onClick={toggleMenu} className="hover:text-blue-600">Główna</Link>
-                        <Link href="/cennik" onClick={toggleMenu} className="hover:text-blue-600">Cennik</Link>
-                        <Link href="/galeria" onClick={toggleMenu} className="hover:text-blue-600">Galeria</Link>
-                        <Link href="/blog" onClick={toggleMenu} className="hover:text-blue-600">Blog</Link>
-                        <Link href="/kontakt" onClick={toggleMenu} className="hover:text-blue-600">Kontakt</Link>
+                        <Link
+                            href="/"
+                            onClick={toggleMenu}
+                            className={isActive("/") ? "text-blue-600" : "hover:text-blue-600"}
+                        >
+                            Główna
+                        </Link>
+                        <Link
+                            href="/cennik"
+                            onClick={toggleMenu}
+                            className={isActive("/cennik") ? "text-blue-600" : "hover:text-blue-600"}
+                        >
+                            Cennik
+                        </Link>
+                        <Link
+                            href="/galeria"
+                            onClick={toggleMenu}
+                            className={isActive("/galeria") ? "text-blue-600" : "hover:text-blue-600"}
+                        >
+                            Galeria
+                        </Link>
+                        <Link
+                            href="/blog"
+                            onClick={toggleMenu}
+                            className={isActive("/blog") ? "text-blue-600" : "hover:text-blue-600"}
+                        >
+                            Blog
+                        </Link>
+                        <Link
+                            href="/kontakt"
+                            onClick={toggleMenu}
+                            className={isActive("/kontakt") ? "text-blue-600" : "hover:text-blue-600"}
+                        >
+                            Kontakt
+                        </Link>
                     </div>
                 </div>
             )}
